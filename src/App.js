@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-
+/* Button component */
 const Button = ({handleClick, text}) => {
   return (
       <button onClick={handleClick}>
@@ -24,15 +24,16 @@ const App = () => {
   const [points, setPoints] = useState(new Uint8Array(7))
   const [mostVoted, setMostVoted] = useState(0)
 
+	/* generates a random index bettwen 0 and anecdotes.length */
   const RandomAnecdotesGenerator = () => {
     const max = anecdotes.length
     const min = 0
     const randomIndex = Math.floor(Math.random() * (max - min) +  min)
-    console.log(randomIndex)
     
     setSelected(randomIndex)
   }
 
+	/* increment the votes of the selected anecdote and update the anecdote with the most votes */
   const IncrementVote = () => {
     const copy = [...points]
     copy[selected] += 1
